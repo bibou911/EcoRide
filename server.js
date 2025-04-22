@@ -15,10 +15,12 @@ const saltRounds = 10;
 
 // Connexion à la base de données
 const db = mysql.createConnection({
-  host: process.env.MYSQL_HOST,       // Changé
-  user: process.env.MYSQL_USER,         // Changé
-  password: process.env.MYSQL_PASSWORD, // Changé
-  database: process.env.MYSQL_DATABASE  // Changé
+  host: process.env.MYSQL_HOST,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  database: process.env.MYSQL_DATABASE,
+  port: process.env.MYSQLPORT || 3306, // <-- Ajoute/Vérifie le port
+  ssl: { rejectUnauthorized: true } // <-- Ajoute SSL
 });
 
 // Vérifie la connexion
@@ -36,8 +38,11 @@ console.log('--- DEBUG Railway --- Type de process.env.MONGO_URI :', typeof proc
 console.log('--- DEBUG Railway --- Valeur de process.env.MONGO_URI :', process.env.MONGO_URI); 
 
 const mongoClient = new MongoClient(mongouri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
 });
 
 let dbMongo;
