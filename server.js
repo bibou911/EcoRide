@@ -32,11 +32,13 @@ db.connect((err) => {
   console.log('Connecté à la base de données MySQL');
 });
 
-const mongouri = process.env.MONGO_URI;
+const rawMongoUri = process.env.MONGO_URI; // Lire la variable brute
+console.log('--- NOUVEAU DEBUG --- Valeur BRUTE de process.env.MONGO_URI :', rawMongoUri); // Log brut
 
-console.log('--- DEBUG Railway --- Type de process.env.MONGO_URI :', typeof process.env.MONGO_URI); 
-console.log('--- DEBUG Railway --- Valeur de process.env.MONGO_URI :', process.env.MONGO_URI); 
+// Forcer en String, gérer si c'est undefined/null, et enlever les espaces autour
+const mongouri = String(rawMongoUri || '').trim(); 
 
+console.log('--- NOUVEAU DEBUG --- Valeur de mongouri APRES nettoyage (trim) :', mongouri); // Log après nettoyage
 const mongoClient = new MongoClient(mongouri, {
   serverApi: {
     version: ServerApiVersion.v1,
