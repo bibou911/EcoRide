@@ -32,6 +32,9 @@ db.connect((err) => {
 
 const mongouri = process.env.MONGO_URI;
 
+console.log('--- DEBUG Railway --- Type de process.env.MONGO_URI :', typeof process.env.MONGO_URI); 
+console.log('--- DEBUG Railway --- Valeur de process.env.MONGO_URI :', process.env.MONGO_URI); 
+
 const mongoClient = new MongoClient(mongouri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
