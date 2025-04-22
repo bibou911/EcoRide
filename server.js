@@ -39,7 +39,13 @@ console.log('--- NOUVEAU DEBUG --- Valeur BRUTE de process.env.MONGO_URI :', raw
 const mongouri = String(rawMongoUri || '').trim(); 
 
 console.log('--- NOUVEAU DEBUG --- Valeur de mongouri APRES nettoyage (trim) :', mongouri); // Log après nettoyage
-const mongoClient = new MongoClient(mongouri); // Retire complètement le deuxième argument des options
+const mongoClient = new MongoClient(mongouri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
 
 let dbMongo;
 
