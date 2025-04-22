@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon Historique - EcoRide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body style="background-color: #f5fff5;">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand text-success fw-bold" href="/">EcoRide</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                 <ul class="navbar-nav ms-auto" id="nav-auth-links">
+                    <li class="nav-item" id="nav-connexion"><a class="nav-link" href="/HTML/connexion.html">Connexion</a></li>
+                    <li class="nav-item" id="nav-inscription"><a class="nav-link" href="/HTML/inscription.html">Inscription</a></li>
+                    <li class="nav-item d-none" id="nav-welcome"><span class="navbar-text me-2">Bonjour, <strong id="nav-pseudo"></strong>!</span></li>
+                    <li class="nav-item d-none" id="nav-mon-compte"><a class="nav-link" href="/HTML/mon_compte.html">Mon Compte</a></li>
+                    <li class="nav-item d-none" id="nav-historique"><a class="nav-link active" aria-current="page" href="/HTML/historique.html">Mon Historique</a></li> <li class="nav-item d-none" id="nav-logout"><button class="btn btn-link nav-link" id="logout-button" type="button">Déconnexion</button></li>
+                    <li class="nav-item"><a class="nav-link" href="/">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Covoiturages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                 </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4 mb-5">
+        <h1 class="mb-4">Mon Historique</h1>
+
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">Mes Participations (en tant que passager)</div>
+            <div class="card-body" id="participations-list">
+                <p>Chargement des participations...</p>
+                </div>
+        </div>
+
+         <div class="card mb-4 shadow-sm" id="trajets-conduits-section" >
+             <div class="card-header">Mes Trajets Proposés (en tant que chauffeur)</div>
+             <div class="card-body" id="trajets-conduits-list">
+                 <p>Chargement des trajets proposés...</p>
+                 </div>
+         </div>
+
+    </div> <footer class="bg-light text-center py-4 mt-auto border-top">
+        <p class="mb-1">Contact : <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a></p>
+        <a href="#">Mentions légales</a>
+    </footer>
+
+    <div class="modal fade" id="avisModal" tabindex="-1" aria-labelledby="avisModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="avis-form">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="avisModalLabel">Laisser un avis pour le trajet</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="avis-participation-id" value="">
+    
+                        <div class="mb-3">
+                            <label class="form-label">Votre note (sur 5) : <span class="text-danger">*</span></label>
+                            <div>
+                                <div class="btn-group" role="group" aria-label="Note de 1 à 5">
+                                    <input type="radio" class="btn-check" name="avisNote" id="note1" value="1" required autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="note1">1★</label>
+    
+                                    <input type="radio" class="btn-check" name="avisNote" id="note2" value="2" required autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="note2">2★</label>
+    
+                                    <input type="radio" class="btn-check" name="avisNote" id="note3" value="3" required autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="note3">3★</label>
+    
+                                    <input type="radio" class="btn-check" name="avisNote" id="note4" value="4" required autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="note4">4★</label>
+    
+                                    <input type="radio" class="btn-check" name="avisNote" id="note5" value="5" required autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="note5">5★</label>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="mb-3">
+                            <label for="avis-commentaire" class="form-label">Votre commentaire :</label>
+                            <textarea class="form-control" id="avis-commentaire" rows="4" placeholder="Décrivez votre expérience..."></textarea>
+                        </div>
+    
+                        <div id="avis-message-area"></div>
+    
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Envoyer l'avis</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../JS/auth.js" defer></script> <script src="../JS/historique.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Proposer un Trajet - EcoRide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body style="background-color: #f5fff5;">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand text-success fw-bold" href="/">EcoRide</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                 <ul class="navbar-nav ms-auto" id="nav-auth-links">
+                    <li class="nav-item" id="nav-connexion"><a class="nav-link" href="/HTML/connexion.html">Connexion</a></li>
+                    <li class="nav-item" id="nav-inscription"><a class="nav-link" href="/HTML/inscription.html">Inscription</a></li>
+                    <li class="nav-item d-none" id="nav-welcome"><span class="navbar-text me-2">Bonjour, <strong id="nav-pseudo"></strong>!</span></li>
+                    <li class="nav-item d-none" id="nav-mon-compte"><a class="nav-link" href="/HTML/mon_compte.html">Mon Compte</a></li>
+                    <li class="nav-item d-none" id="nav-logout"><button class="btn btn-link nav-link" id="logout-button" type="button">Déconnexion</button></li>
+                    <li class="nav-item"><a class="nav-link" href="/">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Covoiturages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                 </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4 mb-5">
+        <h1 class="mb-4 text-center">Proposer un nouveau trajet</h1>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                 <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div id="propose-message-area" class="mb-3"></div>
+
+                        <form id="propose-form">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="propose-depart" class="form-label">Ville de départ <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="propose-depart" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="propose-date-depart" class="form-label">Date et Heure de départ <span class="text-danger">*</span></label>
+                                        <input type="datetime-local" class="form-control" id="propose-date-depart" required>
+                                    </div>
+                                     <div class="mb-3">
+                                        <label for="propose-prix" class="form-label">Prix par passager (€) <span class="text-danger">*</span></label>
+                                        <input type="number" class="form-control" id="propose-prix" step="0.01" min="1" required>
+                                        <div class="form-text">Note: La plateforme prend 2 crédits de commission.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                     <div class="mb-3">
+                                        <label for="propose-arrivee" class="form-label">Ville d'arrivée <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="propose-arrivee" required>
+                                    </div>
+                                     <div class="mb-3">
+                                        <label for="propose-date-arrivee" class="form-label">Date et Heure d'arrivée <span class="text-danger">*</span></label>
+                                        <input type="datetime-local" class="form-control" id="propose-date-arrivee" required>
+                                    </div>
+                                     <div class="mb-3">
+                                        <label for="propose-places" class="form-label">Nombre de places offertes <span class="text-danger">*</span></label>
+                                        <input type="number" class="form-control" id="propose-places" min="1" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                             <div class="mb-3">
+                                <label for="propose-vehicule" class="form-label">Véhicule à utiliser <span class="text-danger">*</span></label>
+                                <select class="form-select" id="propose-vehicule" required>
+                                    <option value="" selected disabled>Chargement de vos véhicules...</option>
+                                    </select>
+                                <div class="form-text">Si votre véhicule n'apparaît pas, ajoutez-le via <a href="/HTML/mon_compte.html">Mon Compte</a>.</div>
+                             </div>
+
+                            <div class="d-grid mt-4">
+                                <button type="submit" class="btn btn-success btn-lg">Proposer ce trajet</button>
+                            </div>
+                        </form>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div> <footer class="bg-light text-center py-4 mt-auto border-top">
+        <p class="mb-1">Contact : <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a></p>
+        <a href="#">Mentions légales</a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../JS/auth.js" defer></script>
+    <script src="../JS/proposer_trajet.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Administration</title>
+</head>
+<body>
+    <section id="admin-create-employee" class="container mt-4">
+        <h3>Créer un nouveau compte Employé</h3>
+    
+        <form id="create-employee-form">
+            <div class="mb-3">
+                <label for="employee-pseudo" class="form-label">Pseudo</label>
+                <input type="text" class="form-control" id="employee-pseudo" name="pseudo" required>
+            </div>
+            <div class="mb-3">
+                <label for="employee-email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="employee-email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="employee-password" class="form-label">Mot de passe initial</label>
+                <input type="password" class="form-control" id="employee-password" name="password" required minlength="8">
+                 <small class="form-text text-muted">8 caractères minimum.</small>
+            </div>
+    
+            <button type="submit" class="btn btn-primary">Créer le compte Employé</button>
+        </form>
+
+        <div class="container mt-4">
+            <p><strong>Total des crédits gagnés par la plateforme : </strong><strong id="total-credits-gagnes" class="text-primary">Chargement...</strong></p>
+            <hr>
+            </div>
+    
+        <div id="create-employee-message" class="mt-3"></div>
+
+        <section id="admin-user-list" class="container mt-5">
+            <h3>Liste des Utilisateurs</h3>
+            <div id="user-list-error-message"></div> <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Pseudo</th>
+                            <th>Email</th>
+                            <th>Rôle</th>
+                            <th>Statut</th> <th>Inscrit le</th>
+                            <th>Crédits</th>
+                            </tr>
+                    </thead>
+                    <tbody id="user-list-body">
+                        <tr>
+                            <td colspan="7" class="text-center text-muted">Chargement de la liste...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="admin-charts" class="container mt-5">
+            <h3>Statistiques Visuelles</h3>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <h5>Covoiturages par Jour (Date de départ)</h5>
+                    <canvas id="covoituragesChart"></canvas>
+                    <div id="covoituragesChartError" class="text-danger small mt-1"></div> </div>
+                <div class="col-md-6 mb-4">
+                    <h5>Crédits Gagnés par Jour (Date de départ)</h5>
+                    <canvas id="creditsChart"></canvas>
+                     <div id="creditsChartError" class="text-danger small mt-1"></div> </div>
+            </div>
+        </section>
+
+        <script src="/JS/admin.js" defer></script>
+    
+    </section>
+</body>
+</html>
