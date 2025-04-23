@@ -332,7 +332,7 @@ async function handleParticipation(covoiturageId, prix) {
     }
 
     // 2. Demander confirmation à l'utilisateur
-    if (confirm(`Confirmez-vous vouloir utiliser ${prix} crédits pour rejoindre ce trajet ?\nDépart: ${trajetDiv?.querySelector('strong:first-of-type + *')?.textContent || 'N/A'}\nArrivée: ${trajetDiv?.querySelector('strong:nth-of-type(2) + *')?.textContent || 'N/A'}`)) {
+    if (confirm(`Confirmez-vous vouloir utiliser ${prix} crédits pour rejoindre ce trajet ?\nDépart: ${details.depart || 'N/A'}\nArrivée: ${details.arrivee || 'N/A'}`)) {
         console.log("details.js: Confirmation reçue. Appel API /api/participations...");
         if (messageAreaParticipation) messageAreaParticipation.innerHTML = '<p class="text-info">Traitement de votre demande...</p>';
         const boutonParticiper = document.getElementById('bouton-participer');
