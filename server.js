@@ -20,7 +20,7 @@ const db = mysql.createConnection({
   password: process.env.MYSQL_PASSWORD,
   database: process.env.MYSQL_DATABASE,
   port: process.env.MYSQLPORT || 3306, // <-- Ajoute/Vérifie le port
-  ssl: { rejectUnauthorized: true } // <-- Ajoute SSL
+  ssl: { rejectUnauthorized: true }, // <-- Ajoute SSL
   connectTimeout: 10000
 });
 
@@ -46,6 +46,10 @@ const mongoClient = new MongoClient(mongouri, {
     strict: true,
     deprecationErrors: true,
   }
+});
+
+app.listen(PORT, () => {
+  console.log(`Serveur lancé sur le port ${PORT}`);
 });
 
 let dbMongo;
