@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
                  if (details.place_restante > 0) {
                      boutonParticiper.disabled = false;
                      boutonParticiper.textContent = `Participer (${details.prix} crédits)`;
-                     boutonParticiper.onclick = () => handleParticipation(details.id, details.prix);
+                     boutonParticiper.onclick = () => handleParticipation(details.id, details.prix, details.depart, details.arrivee);
                  } else {
                      boutonParticiper.disabled = true;
                      boutonParticiper.textContent = 'Complet';
@@ -304,7 +304,7 @@ function displayApprovedReviews(reviews, targetDiv) {
  * @param {number} covoiturageId L'ID du covoiturage à rejoindre.
  * @param {number|string} prix Le prix en crédits du covoiturage.
  */
-async function handleParticipation(covoiturageId, prix) {
+async function handleParticipation(covoiturageId, prix, depart, arrivee) {
     console.log(`details.js: Tentative de participation au covoiturage ID: ${covoiturageId} pour ${prix} crédits.`);
     const messageAreaParticipation = document.getElementById('message-area-participation');
     if(messageAreaParticipation) messageAreaParticipation.innerHTML = ''; // Reset
@@ -332,7 +332,7 @@ async function handleParticipation(covoiturageId, prix) {
     }
 
     // 2. Demander confirmation à l'utilisateur
-    if (confirm(`Confirmez-vous vouloir utiliser ${prix} crédits pour rejoindre ce trajet ?\nDépart: ${details.depart || 'N/A'}\nArrivée: ${details.arrivee || 'N/A'}`)) {
+    if (confirm(`Confirmez-vous vouloir utiliser ${prix} crédits pour rejoindre ce trajet ?\nDépart: ${depart || 'N/A'}\nArrivée: ${arrivee || 'N/A'}`)) {
         console.log("details.js: Confirmation reçue. Appel API /api/participations...");
         if (messageAreaParticipation) messageAreaParticipation.innerHTML = '<p class="text-info">Traitement de votre demande...</p>';
         const boutonParticiper = document.getElementById('bouton-participer');
